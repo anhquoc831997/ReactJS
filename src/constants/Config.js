@@ -1,1 +1,1 @@
-export const API_URL = 'https://json-sample-anhquoc.herokuapp.com';
+export const API_URL = 'http://localhost:3000';

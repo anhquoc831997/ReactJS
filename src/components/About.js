@@ -7,8 +7,10 @@ class About extends Component {
 
   render() {
     return (
+      <div></div>
+      /*
       <div>
-
+    
       <section className="ftco-section">
           <div className="container">
             <div className="row d-md-flex">
@@ -108,7 +110,7 @@ class About extends Component {
         </section>
         
       </div>
-
+     */
     );
   }
 }

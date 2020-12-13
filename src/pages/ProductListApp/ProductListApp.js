@@ -84,19 +84,19 @@ class ProductListApp extends Component {
             if(index<8)
                 {
                     sanpham[0].id=1;
-                    sanpham[0].name="Tuong phat giao";
+                    sanpham[0].name="Tượng phật giáo";
                     sanpham[0].plink.push(product.link);
 
                 }
             else if(index<16)
                 {
                     sanpham[1].id=2;
-                    sanpham[1].name="Tuong cong giao";
+                    sanpham[1].name="Tượng công giáo";
                     sanpham[1].plink.push(product.link);
                 }
                 else {
                     sanpham[2].id=3;
-                    sanpham[2].name="Tuong nghe thuat";
+                    sanpham[2].name="Tượng nghệ thuật";
                     sanpham[2].plink.push(product.link);
                 }
             if(index%8==0)

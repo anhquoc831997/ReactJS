@@ -16,7 +16,10 @@ class ProductListPage extends Component {
     }
 
     render() {
+        var stt = localStorage.getItem('status');
         var { products } = this.props;
+        console.log("test"+stt);
+        if (stt == "true")
         return (
             <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <Link to="/product/add" className="btn btn-info mb-10">
@@ -27,6 +30,8 @@ class ProductListPage extends Component {
                 </ProductList>
             </div>
         );
+        else
+         return(<div>Không có quyền truy cập</div>);
     }
 
     showProducts(products) {
