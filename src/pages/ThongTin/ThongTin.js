@@ -20,6 +20,7 @@ class ThongTin extends Component {
     render() {
         var { products } = this.props;
         var giohang =localStorage.getItem('giohang');
+        console.log(giohang[1]);
         return (
             <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <Link to="/thongtintaikhoan" className="btn btn-info mb-10">

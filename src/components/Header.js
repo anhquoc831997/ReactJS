@@ -10,7 +10,7 @@ class Header extends Component {
     var stt = localStorage.getItem('status');
     var plink = "/thongtin";
     if (stt == "true") plink = "/product-list";
-    console.log(stt);
+    //console.log(stt);
     var products = [
       {
         id: 0,

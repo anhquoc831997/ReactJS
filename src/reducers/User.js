@@ -16,16 +16,16 @@ const User = (state = initialState, action) => {
     var { id, product } = action;
     switch (action.type) {
         case Types.FETCH_USER:
-            state = action.products;
+            state = action.User;
             return [...state];
-        case Types.DELETE_PRODUCT:
+        case Types.DELETE_USER:
             index = findIndex(state, id);
             state.splice(index, 1);
             return [...state];
         case Types.ADD_USER:
-            state.push(action.product);
+            state.push(action.User);
             return [...state];
-        case Types.UPDATE_PRODUCT:
+        case Types.UPDATE_USER:
             index = findIndex(state, product.id);
             state[index] = product;
             return [...state];

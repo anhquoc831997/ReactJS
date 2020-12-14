@@ -7,6 +7,7 @@ import { actFetchProductsRequest, actDeleteProductRequest, actFetchUserRequest }
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import { Redirect } from 'react-router-dom'
+import Signup from '../Signup/Signup';
 
 class Login extends Component {
     constructor(props) {
@@ -23,19 +24,25 @@ class Login extends Component {
         this.setState({
             [name]: value
         });
+        console.log(value);
     }
     onLogin = (e) => {
         var { txtUserName, txtPassword } = this.state;
-        var { products } = this.props;
-        for (var i = 0; i < products.length; i++)
-            if (txtUserName === products[i].username && txtPassword === products[i].password) {
-                localStorage.setItem('user', products[i].name);
-                localStorage.setItem('username', products[i].password);
+        console.log(this.state);
+        console.log(this.props.User);
+        var users  = this.props;
+        console.log(users);
+        for (var i = 0; i < users.User.length; i++)
+            if (txtUserName == users.User[i].username && txtPassword == users.User[i].password) {
+                localStorage.setItem('user', users.User[i].name);
+                localStorage.setItem('username', users.User[i].password);
 
-                localStorage.setItem('pass', products[i].password);
-                localStorage.setItem('status', products[i].status);
+                localStorage.setItem('pass', users.User[i].password);
+                localStorage.setItem('status', users.User[i].status);
 
             }
+        window.location.reload();
+        
     }
     componentDidMount() {
         this.props.fetchAllUser();
@@ -54,7 +61,7 @@ class Login extends Component {
         if (loggedInUser != null) {
             return <Redirect to="/app" />
         }
-        console.log(products);
+        //console.log(products);
         return (
             <div >{/*
                 <Header />
@@ -125,7 +132,7 @@ class Login extends Component {
                     </div>
             */}
             <div className="container">
-          <button type="button" className="btn btn-info btn-round" data-toggle="modal" data-target="#loginModal">
+          <button type="button" className="bg-primary text-white py-3 px-4 rounded" data-toggle="modal" data-target="#loginModal">
             Login
           </button>  
         </div>
@@ -142,14 +149,14 @@ class Login extends Component {
                   <h4>Login</h4>
                 </div>
                 <div className="d-flex flex-column text-center">
-                  <form>
-                    <div className="form-group">
-                      <input type="email" className="form-control" id="email1" placeholder="Your email address..." />
+                  <form >
+                    <div className="form-group" >
+                      <input name="txtUserName" value={txtUserName} onChange={this.onChange} className="form-control" placeholder="Your email address..." />
                     </div>
                     <div className="form-group">
-                      <input type="password" className="form-control" id="password1" placeholder="Your password..." />
+                      <input name="txtPassword" value={txtPassword} onChange={this.onChange} type="password" className="form-control" placeholder="Your password..." />
                     </div>
-                    <button type="button" className="btn btn-info btn-block btn-round">Login</button>
+                    <button type="button" className="btn btn-info btn-block btn-round" onClick={this.onLogin}>Login</button>
                   </form>
                   <div className="text-center text-muted delimiter">or use a social network</div>
                   <div className="d-flex justify-content-center social-buttons">
@@ -165,8 +172,8 @@ class Login extends Component {
                   </div>
                 </div>
               </div>
-              <div className="modal-footer d-flex justify-content-center">
-                <div className="signup-section">Not a member yet? <a href="#a" className="text-info"> Sign Up</a>.</div>
+              <div className="modal-footer">
+                <div className="">Not a member yet?</div><Signup/>
               </div>
             </div>
           </div>
@@ -199,7 +206,7 @@ class Login extends Component {
 
 const mapStateToProps = state => {
     return {
-        products: state.products
+        User: state.User
     }
 }
 
