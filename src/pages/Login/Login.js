@@ -92,8 +92,8 @@ class Login extends Component {
                     </div>
                 </div>
             <Footer />*/}
-                
-                    <div className="modal fade" id="modalLoginForm" tabIndex={-1} role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            {/*
+                    <div className="modal fade" id="modalLoginForm" tabIndex={-1} data-backdrop="" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                         <div className="modal-dialog" role="document">
                             <div className="modal-content">
                                 <div className="modal-header text-center">
@@ -123,8 +123,57 @@ class Login extends Component {
                     <div className="text-center">
                         <a href className="bg-primary text-white py-3 px-4 rounded" data-toggle="modal" data-target="#modalLoginForm">Đăng nhập</a>
                     </div>
+            */}
+            <div className="container">
+          <button type="button" className="btn btn-info btn-round" data-toggle="modal" data-target="#loginModal">
+            Login
+          </button>  
+        </div>
+        <div className="modal fade" id="loginModal" data-backdrop="" tabIndex={-1} role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div className="modal-dialog modal-dialog-centered" role="document">
+            <div className="modal-content" style={{width: '402px', height: '502px'}}>
+              <div className="modal-header border-bottom-0">
+                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <div className="modal-body">
+                <div className="form-title text-center">
+                  <h4>Login</h4>
                 </div>
-            
+                <div className="d-flex flex-column text-center">
+                  <form>
+                    <div className="form-group">
+                      <input type="email" className="form-control" id="email1" placeholder="Your email address..." />
+                    </div>
+                    <div className="form-group">
+                      <input type="password" className="form-control" id="password1" placeholder="Your password..." />
+                    </div>
+                    <button type="button" className="btn btn-info btn-block btn-round">Login</button>
+                  </form>
+                  <div className="text-center text-muted delimiter">or use a social network</div>
+                  <div className="d-flex justify-content-center social-buttons">
+                    <button type="button" className="btn btn-secondary btn-round" data-toggle="tooltip" data-placement="top" title="Twitter">
+                      <i className="fab fa-twitter" />
+                    </button>
+                    <button type="button" className="btn btn-secondary btn-round" data-toggle="tooltip" data-placement="top" title="Facebook">
+                      <i className="fab fa-facebook" />
+                    </button>
+                    <button type="button" className="btn btn-secondary btn-round" data-toggle="tooltip" data-placement="top" title="Linkedin">
+                      <i className="fab fa-linkedin" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div className="modal-footer d-flex justify-content-center">
+                <div className="signup-section">Not a member yet? <a href="#a" className="text-info"> Sign Up</a>.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
 
         );
     }
