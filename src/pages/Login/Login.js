@@ -7,6 +7,7 @@ import { actFetchProductsRequest, actDeleteProductRequest, actFetchUserRequest }
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import { Redirect } from 'react-router-dom'
+import Signup from '../Signup/Signup';
 
 class Login extends Component {
     constructor(props) {
@@ -23,19 +24,25 @@ class Login extends Component {
         this.setState({
             [name]: value
         });
+        console.log(value);
     }
     onLogin = (e) => {
         var { txtUserName, txtPassword } = this.state;
-        var { products } = this.props;
-        for (var i = 0; i < products.length; i++)
-            if (txtUserName === products[i].username && txtPassword === products[i].password) {
-                localStorage.setItem('user', products[i].name);
-                localStorage.setItem('username', products[i].password);
+        console.log(this.state);
+        console.log(this.props.User);
+        var users  = this.props;
+        console.log(users);
+        for (var i = 0; i < users.User.length; i++)
+            if (txtUserName == users.User[i].username && txtPassword == users.User[i].password) {
+                localStorage.setItem('user', users.User[i].name);
+                localStorage.setItem('username', users.User[i].password);
 
-                localStorage.setItem('pass', products[i].password);
-                localStorage.setItem('status', products[i].status);
+                localStorage.setItem('pass', users.User[i].password);
+                localStorage.setItem('status', users.User[i].status);
 
             }
+        window.location.reload();
+        
     }
     componentDidMount() {
         this.props.fetchAllUser();
@@ -54,7 +61,7 @@ class Login extends Component {
         if (loggedInUser != null) {
             return <Redirect to="/app" />
         }
-        console.log(products);
+        //console.log(products);
         return (
             <div >{/*
                 <Header />
@@ -92,8 +99,8 @@ class Login extends Component {
                     </div>
                 </div>
             <Footer />*/}
-                
-                    <div className="modal fade" id="modalLoginForm" tabIndex={-1} role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            {/*
+                    <div className="modal fade" id="modalLoginForm" tabIndex={-1} data-backdrop="" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                         <div className="modal-dialog" role="document">
                             <div className="modal-content">
                                 <div className="modal-header text-center">
@@ -123,8 +130,57 @@ class Login extends Component {
                     <div className="text-center">
                         <a href className="bg-primary text-white py-3 px-4 rounded" data-toggle="modal" data-target="#modalLoginForm">Đăng nhập</a>
                     </div>
+            */}
+            <div className="container">
+          <button type="button" className="bg-primary text-white py-3 px-4 rounded" data-toggle="modal" data-target="#loginModal">
+            Login
+          </button>  
+        </div>
+        <div className="modal fade" id="loginModal" data-backdrop="" tabIndex={-1} role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div className="modal-dialog modal-dialog-centered" role="document">
+            <div className="modal-content" style={{width: '402px', height: '502px'}}>
+              <div className="modal-header border-bottom-0">
+                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <div className="modal-body">
+                <div className="form-title text-center">
+                  <h4>Login</h4>
                 </div>
-            
+                <div className="d-flex flex-column text-center">
+                  <form >
+                    <div className="form-group" >
+                      <input name="txtUserName" value={txtUserName} onChange={this.onChange} className="form-control" placeholder="Your email address..." />
+                    </div>
+                    <div className="form-group">
+                      <input name="txtPassword" value={txtPassword} onChange={this.onChange} type="password" className="form-control" placeholder="Your password..." />
+                    </div>
+                    <button type="button" className="btn btn-info btn-block btn-round" onClick={this.onLogin}>Login</button>
+                  </form>
+                  <div className="text-center text-muted delimiter">or use a social network</div>
+                  <div className="d-flex justify-content-center social-buttons">
+                    <button type="button" className="btn btn-secondary btn-round" data-toggle="tooltip" data-placement="top" title="Twitter">
+                      <i className="fab fa-twitter" />
+                    </button>
+                    <button type="button" className="btn btn-secondary btn-round" data-toggle="tooltip" data-placement="top" title="Facebook">
+                      <i className="fab fa-facebook" />
+                    </button>
+                    <button type="button" className="btn btn-secondary btn-round" data-toggle="tooltip" data-placement="top" title="Linkedin">
+                      <i className="fab fa-linkedin" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div className="modal-footer">
+                <div className="">Not a member yet?</div><Signup/>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
 
         );
     }
@@ -150,7 +206,7 @@ class Login extends Component {
 
 const mapStateToProps = state => {
     return {
-        products: state.products
+        User: state.User
     }
 }
 

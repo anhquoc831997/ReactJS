@@ -23,10 +23,10 @@ export const actFetchUserRequest = () => {
     };
 }
 
-export const actFetchUser = (products) => {
+export const actFetchUser = (User) => {
     return {
-        type : Types.FETCH_PRODUCTS,
-        products
+        type : Types.FETCH_USER,
+        User
     }
 }
 export const actDeleteProductRequest = (id) => {

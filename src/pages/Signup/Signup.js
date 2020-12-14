@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { actAddUserRequest} from './../../actions/index';
+import { actAddUserRequest } from './../../actions/index';
 import { connect } from 'react-redux';
 
 class Signup extends Component {
@@ -35,23 +35,27 @@ class Signup extends Component {
 
     onSave = (e) => {
         e.preventDefault();
-        var { id, txtname, txtusername,txtpassword } = this.state;
+        var { id, txtname, txtusername, txtpassword } = this.state;
         var { history } = this.props;
         var product = {
-            id : id,
-            name : txtname,
-            username : txtusername,
-            password : txtpassword,
-            status : false
+            id: id,
+            name: txtname,
+            username: txtusername,
+            password: txtpassword,
+            status: false
         };
 
         this.props.onAddUser(product);
-        history.goBack();
+        window.location.reload();
+
+        //history.goBack();
     }
 
     render() {
-        var { txtname, txtusername,txtpassword} = this.state;
+        var { txtname, txtusername, txtpassword } = this.state;
         return (
+            <span>
+                {/*
             <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                 <form onSubmit={this.onSave}>
                     <div className="form-group">
@@ -91,6 +95,57 @@ class Signup extends Component {
                 </form>
 
             </div>
+            */}
+                <div className="container">
+                    <a href="/signup" className="text-info" data-toggle="modal" data-target="#signupModal">
+                        Sign up
+                    </a>
+                </div>
+                <div className="modal fade" id="signupModal" data-backdrop="" tabIndex={-1} role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div className="modal-dialog modal-dialog-centered" role="document">
+                        <div className="modal-content" style={{ width: '402px', height: '502px' }}>
+                            <div className="modal-header border-bottom-0">
+                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            <div className="modal-body">
+                                <div className="form-title text-center">
+                                    <h4>Sign up</h4>
+                                </div>
+                                <div className="d-flex flex-column text-center">
+                                    <form >
+                                        <div className="form-group" >
+                                            <input name="txtname" value={txtname} onChange={this.onChange} className="form-control" placeholder="Your name..." />
+                                        </div>
+                                        <div className="form-group" >
+                                            <input name="txtusername" value={txtusername} onChange={this.onChange} className="form-control" placeholder="Your email address..." />
+                                        </div>
+                                        <div className="form-group">
+                                            <input name="txtpassword" value={txtpassword} onChange={this.onChange} type="password" className="form-control" placeholder="Your password..." />
+                                        </div>
+                                        <button type="button" className="btn btn-info btn-block btn-round" onClick={this.onSave}>Sign up</button>
+                                    </form>
+                                    <div className="text-center text-muted delimiter">or use a social network</div>
+                                    <div className="d-flex justify-content-center social-buttons">
+                                        <button type="button" className="btn btn-secondary btn-round" data-toggle="tooltip" data-placement="top" title="Twitter">
+                                            <i className="fab fa-twitter" />
+                                        </button>
+                                        <button type="button" className="btn btn-secondary btn-round" data-toggle="tooltip" data-placement="top" title="Facebook">
+                                            <i className="fab fa-facebook" />
+                                        </button>
+                                        <button type="button" className="btn btn-secondary btn-round" data-toggle="tooltip" data-placement="top" title="Linkedin">
+                                            <i className="fab fa-linkedin" />
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </span>
         );
     }
 
@@ -98,13 +153,13 @@ class Signup extends Component {
 
 const mapStateToProps = state => {
     return {
-        itemEditing : state.itemEditing
+        itemEditing: state.itemEditing
     }
 }
 
 const mapDispatchToProps = (dispatch, props) => {
     return {
-        onAddUser : (product) => {
+        onAddUser: (product) => {
             dispatch(actAddUserRequest(product));
         }
     }
