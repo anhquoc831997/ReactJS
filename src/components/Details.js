@@ -5,15 +5,24 @@ import Header from './Header'
 import { Link } from "react-router-dom";
 
 class Details extends Component {
-    onAdd = (id,gia,name) => {
-       if(localStorage.getItem('giohang')==null)
-        localStorage.setItem('giohang',id);
+    onAdd = (id, gia, name) => {
+       if(localStorage.getItem('giohang')==null){
+        var pid = "";
+        if( id < 10) pid = "0" + id;
+        else pid = id;
+        //var pgiohang = new Array({idSanPham : pid, soLuong : 1});
+        localStorage.setItem('giohang',pid);
+       }
         else
-            {  var pid="";
-                if(id<10) pid="0"+id;
-                else pid=id;
-                var lc=localStorage.getItem('giohang');
-                localStorage.setItem('giohang',pid+" "+lc);
+            {  var pid = "";
+                if(id < 10) pid = "0" + id;
+                else pid = id;
+                var lc = localStorage.getItem('giohang');
+                /*var lc = new Array();
+                console.log(lc[0]);
+                lc.push({idSanPham : pid, soLuong : 1});
+                console.log(lc);*/
+                localStorage.setItem('giohang', pid + " " + lc);
             }
         alert("Thêm vào giỏ hàng thành công");
     }

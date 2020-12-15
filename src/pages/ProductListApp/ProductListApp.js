@@ -22,7 +22,6 @@ class ProductListApp extends Component {
         var { products } = this.props;
         return (
             <div>
-
                 <div>
                 <div>
               <section className="ftco-section ftco-work">
@@ -35,14 +34,9 @@ class ProductListApp extends Component {
                   <div>
                     {this.showProducts(products)}
                   </div>
-
                     </div>
                     </div>
-
               </section>
-
-               
-          
               </div>
             </div>
             </div>
@@ -53,12 +47,10 @@ class ProductListApp extends Component {
         var result = null;
         var sanpham=[
         {
-            
             id: null,
             name: "",
             plink: [],
             index: null,
-            
         },
         {
             
@@ -66,27 +58,24 @@ class ProductListApp extends Component {
             name: "",
             plink: [],
              index: null,
-
-            
         },
         {
-            
             id: null,
             name: "",
             plink: [],
             index: [],
-
-            
         },
         ];
         if (products.length > 0) {
             result = products.map((product, index) => {
+            if(product.sub_menu == "Tượng Phật Giáo"){
+                
+            }
             if(index<8)
                 {
                     sanpham[0].id=1;
                     sanpham[0].name="Tượng phật giáo";
                     sanpham[0].plink.push(product.link);
-
                 }
             else if(index<16)
                 {
@@ -101,20 +90,17 @@ class ProductListApp extends Component {
                 }
             if(index%8==0)
                 return (
-
                              <ProductApp
                                     key={index}
                                     product={sanpham}
                                     index={index}
                                     onDelete={this.onDelete}
                             />
-
                 );
             });
         }
         return result;
     }
-
 }
 
 const mapStateToProps = state => {

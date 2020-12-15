@@ -11,14 +11,6 @@ class Header extends Component {
     var plink = "/thongtin";
     if (stt == "true") plink = "/product-list";
     //console.log(stt);
-    var products = [
-      {
-        id: 0,
-        gia: 1000,
-        name: "Tượng Phật Quan Âm bằng đá không chỉ mang lại sự sang trọng cho biệt thư, tư gia mà còn có ý nghĩa về mặt phong thủy. Bên cạnh đó, các phật tử còn tin rằng thờ Phật Bà Quan Âmm sẽ được che chở khỏi mọi khó khăn, gặp nhiều vận may, gia đình hạnh phúc.",
-        plink: "/images/tuongphatadida.jpg",
-      }
-    ];
     var list_menu = [
       {
         "id": 1,
@@ -41,7 +33,7 @@ class Header extends Component {
             "url": "/listapp/2"
           },
           {
-            "name": "Tượng Phật",
+            "name": "Tượng Nghệ Thuật",
             "url": "/listapp/3"
           }
         ],
@@ -117,7 +109,7 @@ class Header extends Component {
                             function ABC() {
                               if (loggedInUser == null || loggedInUser == undefined)
                                 return (
-                                   <li><Login /></li>
+                                  <li><Login /></li>
                                 )
                               else
                                 return (
@@ -138,6 +130,7 @@ class Header extends Component {
 
                               })
                           }
+                          <Link to="/thongtin"><img src="/images/giohang.png" alt="gio hang" style={{ width: '100px', height: '50px' }} /></Link>
 
 
                           {/*

@@ -35,9 +35,9 @@ class Login extends Component {
         for (var i = 0; i < users.User.length; i++)
             if (txtUserName == users.User[i].username && txtPassword == users.User[i].password) {
                 localStorage.setItem('user', users.User[i].name);
-                localStorage.setItem('username', users.User[i].password);
+                localStorage.setItem('username', users.User[i].username);
 
-                localStorage.setItem('pass', users.User[i].password);
+                //localStorage.setItem('pass', users.User[i].password);
                 localStorage.setItem('status', users.User[i].status);
 
             }
